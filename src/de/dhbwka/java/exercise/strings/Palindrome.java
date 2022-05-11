@@ -2,6 +2,8 @@ package de.dhbwka.java.exercise.strings;
 
 import java.util.Scanner;
 
+import de.dhbwka.java.exercise.io.PalindromeFile;
+
 public class Palindrome {
     
     public static void main(String[] args) {
@@ -13,8 +15,11 @@ public class Palindrome {
         System.out.println("Umgekehrt: " + sr);
         if(s.equalsIgnoreCase(sr)){
             System.out.println(s + " ist ein Palindrom!");
+            PalindromeFile.writeLine(s);
         }else{
             System.out.println(s + " ist kein Palindrom!");
         }
+        System.out.println("Bisher gefundene Palindrome:");
+        PalindromeFile.printFile();
     }
 }
