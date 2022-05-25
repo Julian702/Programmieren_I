@@ -1,52 +1,58 @@
 package de.dhbwka.java.exercise.ui;
 
-import javax.swing.*;
+import java.awt.FlowLayout;
 
-public class ComponentFrame {
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+
+public class ComponentFrame extends JFrame{
     public static void main(String[] args) {
+        ComponentFrame componentFrame = new ComponentFrame("Several basic Swing components", 512, 128);
+        componentFrame.setVisible(true);
+    }
 
-        JFrame frame = new JFrame();
-        frame.setTitle("Several basic Swing components");
-        frame.setSize(600, 150);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public ComponentFrame(String title, int width, int height){
 
-        JPanel panel = new JPanel();
-        frame.add(panel);
+        super(title);
+        this.setSize(width, height);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new FlowLayout());
 
         JLabel label = new JLabel("JLabel");
-        panel.add(label);
+        this.add(label);
 
         JTextField textField = new JTextField("JTextField");
-        panel.add(textField);
+        this.add(textField);
         JPasswordField passwordField = new JPasswordField("password");
-        panel.add(passwordField);
+        this.add(passwordField);
 
         JButton button = new JButton("JButton");
         button.setToolTipText("Tooltip");
-        panel.add(button);
+        this.add(button);
         JToggleButton toggleButton = new JToggleButton("JToggleButton");
-        panel.add(toggleButton);
+        this.add(toggleButton);
 
         JCheckBox checkBox = new JCheckBox("JCheckBox");
-        panel.add(checkBox);
+        this.add(checkBox);
 
         String[] itemList ={"Item 1","Item 2", "Item 3"};
-        JComboBox comboBox = new JComboBox<String>(itemList);
+        JComboBox<String> comboBox = new JComboBox<String>(itemList);
         comboBox.addItem("Item 4");            
-        panel.add(comboBox);
+        this.add(comboBox);
 
         ButtonGroup buttonGroup = new ButtonGroup();
-        JRadioButton radioButton1 = new JRadioButton("JRadioButton1");
-        radioButton1.setSelected(true);
-        buttonGroup.add(radioButton1);
-        panel.add(radioButton1);
-        JRadioButton radioButton2 = new JRadioButton("JRadioButton2");
-        buttonGroup.add(radioButton2);
-        panel.add(radioButton2);
-        JRadioButton radioButton3 = new JRadioButton("JRadioButton3");
-        buttonGroup.add(radioButton3);
-        panel.add(radioButton3);
-
-        frame.setVisible(true);   
+        for (int i = 1; i < 4; i++) {
+            JRadioButton radioButton = new JRadioButton("JRadioButton"+i);
+            buttonGroup.add(radioButton);
+            this.add(radioButton);
+        }
     }
 }
